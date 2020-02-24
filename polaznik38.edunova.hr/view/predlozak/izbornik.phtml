@@ -8,10 +8,36 @@
       <li class="nav-item">
         <a class="nav-link" href="/index">Početna</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/index/onama">O nama</a>
+      </li>
+      <?php if(isset($_SESSION['operater'])): ?>
+        <?php if ($_SESSION['operater']->uloga == 'oper') : ?>
+          <li class="nav-item">
+          <a class="nav-link" href="/index">Kontakti</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/index">Početna</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/index">Početna</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/index">Početna</a>
+        </li>
+        <?php endif; ?>
+        <?php if ($_SESSION['operater']->uloga == 'admin') : ?>
+          <li class="nav-item">
+            <a class="nav-link" href="/index">Kontakti</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/index">Korisnici</a>
+          </li>
+        <?php endif; ?>
     </ul>
-    <?php 
-      if (!isset($_SESSION['operater'])) :?>
-    <form class="form-inline" method="POST" action="/index/autorizacija">
+    <?php endif; ?>
+    <?php if (!isset($_SESSION['operater'])) :?>
+    <form class="form-inline my-2 my-lg-0" method="POST" action="/index/autorizacija">
   <label class="sr-only" for="email">Korisničko ime</label>
   <div class="input-group mb-2 mr-sm-2">
     <input type="text" class="form-control" id="email" name="email" placeholder="Korisničko ime">
@@ -28,13 +54,12 @@
   </div>
 
   <button type="submit" class="btn btn-primary mb-2">Prijava</button>
+  <?php endif; ?>
 </form>
-      <?php endif; ?>
-    <?php 
+  <?php 
        if (isset($_SESSION['operater'])) :
     ?>
     <a href="/index/odjava">Odjava</a>
     <?php endif; ?>
-
-  </div>
+    </div>
 </nav>
