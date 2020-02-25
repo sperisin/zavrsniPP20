@@ -27,20 +27,28 @@
         </li>
         <?php endif; ?>
         <?php if ($_SESSION['operater']->uloga == 'admin') : ?>
-          <li class="nav-item">
-            <a class="nav-link" href="/index">Kontakti</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/index">Korisnici</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Upravljačka ploča
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/operater/index">Operateri</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
           </li>
         <?php endif; ?>
-    </ul>
+    
     <?php endif; ?>
+    </ul>
     <?php if (!isset($_SESSION['operater'])) :?>
+      <ul class="navbar-nav ml-auto">
+      <li>
     <form class="form-inline my-2 my-lg-0" method="POST" action="/index/autorizacija">
   <label class="sr-only" for="email">Korisničko ime</label>
   <div class="input-group mb-2 mr-sm-2">
-    <input type="text" class="form-control" id="email" name="email" placeholder="Korisničko ime">
+    <input type="text" class="form-control" id="username" name="username" placeholder="Korisničko ime">
   </div>
 
   <label class="sr-only" for="lozinka">Lozinka</label>
@@ -50,12 +58,15 @@
 
   <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Zapamti me</label>
+    <label style="margin-right: 10px;" class="form-check-label" for="exampleCheck1">Zapamti me</label>
   </div>
 
   <button type="submit" class="btn btn-primary mb-2">Prijava</button>
-  <?php endif; ?>
+  
 </form>
+<?php endif; ?>
+</li>
+</ul>
   <?php 
        if (isset($_SESSION['operater'])) :
     ?>

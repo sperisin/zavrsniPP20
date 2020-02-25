@@ -10,16 +10,24 @@ class Operater
         return $izraz->fetchAll();
     }
 
+    public static function readAll()
+    {
+        $veza = DB::getInstanca();
+        $izraz = $veza->prepare('select * from operater');
+        $izraz->execute();
+        return $izraz->fetchAll();
+    }
+
     public static function create()
     {
         $veza = DB::getInstanca();
         $izraz=$veza->prepare('insert into operater 
-        (email,lozinka,ime,prezime,uloga) values 
-        (:email,:lozinka,:ime,:prezime,:uloga)');
-        unset($_POST['lozinkaponovo']);
-        $_POST['lozinka'] = 
-             password_hash($_POST['lozinka'],PASSWORD_BCRYPT);
+        (username, pass, ime, prezime, email, uloga) values 
+        (:username, :pass, :ime, :prezime, :email, oper)');
+        $_POST['pass'] = 
+             password_hash($_POST['pass'],PASSWORD_BCRYPT);
         $izraz->execute($_POST);
+        unset($_POST['lozinkaponovo']);
         /* NAČIN 2
         $izraz->execute([
             'email' => $_POST['email'],

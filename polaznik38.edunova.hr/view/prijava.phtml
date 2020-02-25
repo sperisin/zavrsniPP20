@@ -1,34 +1,23 @@
-<form action="/index/autorizacija">
+<form method="POST" action="/operater/dodajnovi">
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email">
     </div>
     <div class="form-group col-md-6">
-      <label for="inputPassword4">Lozinka</label>
-      <input type="password" class="form-control" id="inputPassword4">
+      <label for="username">Korisničko ime</label>
+      <input type="text" class="form-control" id="username">
     </div>
   </div>
-  <div class="form-group">
-    <label for="inputAddress">Adresa</label>
-    <input type="text" class="form-control" id="inputAddress">
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputCity">Mjesto</label>
-      <input type="text" class="form-control" id="inputCity">
-    </div>
-    <div class="form-group col-md-4">
-      <label for="inputState">Država</label>
-      <select id="inputState" class="form-control">
-        <option selected>Odaberi...</option>
-        <option></option>
-      </select>
-    </div>
-    <div class="form-group col-md-2">
-      <label for="inputZip">Poštanski broj</label>
-      <input type="text" class="form-control" id="inputZip">
-    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="pass">Lozinka</label>
+        <input type="password" class="form-control" id="pass">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="lozinkaponovo">Potvrdite lozinku</label>
+        <input type="password" class="form-control" id="lozinkaponovo">
+      </div>
   </div>
   <button type="submit" class="btn btn-primary">Registriraj se</button>
 </form>

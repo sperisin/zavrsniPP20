@@ -34,7 +34,7 @@ class IndexController extends Controller
         //$veza->query('select lozinka from operater 
         //              where email=\'' . $_POST['email'] . '\';');
         $izraz = $veza->prepare('select * from operater 
-                      where username=:email;');
+                      where username=:username;');
         $izraz->execute(['email'=>$_POST['email']]);
         //$rezultat=$izraz->fetch(PDO::FETCH_OBJ);
         $rezultat=$izraz->fetch();
