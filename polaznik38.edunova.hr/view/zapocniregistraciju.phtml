@@ -1,0 +1,38 @@
+<form method="POST" action="/index/zavrsiregistraciju">
+    <div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" name="email">
+    </div>
+</div>
+<div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="oib">OIB</label>
+      <input type="text" class="form-control" id="oib" name="oib">
+    </div>
+    </div>
+
+<div class="form-row justify-content-center">
+<div class="form-group col-md-6 mb-4 mx-4">
+  <label for="sel1">Select list:</label>
+  <select class="form-control" id="sel1">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+  </select>
+</div>
+</div>
+
+<div class="text-center">
+      <button class="btn btn-primary" onclick="check_email()">Započnite registraciju</button>
+</div>
+
+<script>
+function check_email() {
+  alert("Ukoliko ste popunili sve podatke, provjerite svoj email");
+}
+</script>
+</form>
+
+

@@ -15,7 +15,7 @@ return [
     'db' =>[
         'server' => 'localhost',
         'baza' => 'crm',
-        'korisnik' => 'stjepan.perisin',
-        'lozinka' => 'nesto'
+        'korisnik' => 'edunova',
+        'lozinka' => 'e'
     ]
 ];

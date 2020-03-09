@@ -5,23 +5,23 @@ class IndexController extends Controller
 
     public function prijava()
     {
-        $this->view->render('prijava');
+        $this->view->render('zapocniregistraciju');
     }
 
     public function autorizacija()
     {
-        if(!isset($_POST['email']) || 
+        if(!isset($_POST['username']) || 
         !isset($_POST['lozinka'])){
-            $this->view->render('prijava',[
+            $this->view->render('zapocniregistraciju',[
                 'poruka'=>'Nisu postavljeni pristupni podaci',
                 'email' =>''
             ]);
             return;
         }
 
-        if(trim($_POST['email'])==='' || 
+        if(trim($_POST['username'])==='' || 
         trim($_POST['lozinka'])===''){
-            $this->view->render('prijava');
+            $this->view->render('zapocniregistraciju');
             return;
         }
 
@@ -34,8 +34,8 @@ class IndexController extends Controller
         //$veza->query('select lozinka from operater 
         //              where email=\'' . $_POST['email'] . '\';');
         $izraz = $veza->prepare('select * from operater 
-                      where username=:username;');
-        $izraz->execute(['email'=>$_POST['email']]);
+                      where username=:username');
+        $izraz->execute(['username'=>$_POST['username']]);
         //$rezultat=$izraz->fetch(PDO::FETCH_OBJ);
         $rezultat=$izraz->fetch();
 /*
@@ -55,12 +55,26 @@ class IndexController extends Controller
             return;
         }*/
         //unset($rezultat->pass);
+        if($rezultat==null){
+            $this->view->render('zapocniregistraciju',[
+                'poruka'=>'Nepostojeći korisnik',
+                'username'=>$_POST['username']
+            ]);
+            Partner::readAll();
+            return;
+        }
+        if(!password_verify($_POST['lozinka'],$rezultat->lozinka)){
+            $this->view->render('zapocniregistraciju',[
+                'poruka'=>'Neispravna kombinacija email i lozinka',
+                'username'=>$_POST['username']
+            ]);
+            Partner::readAll();
+            return;
+        }
+
+        unset($rezultat->lozinka);
         $_SESSION['operater']=$rezultat;
-        //echo '<pre>';
-        //print_r($_SESSION);
-        //echo '</pre>';
-        $this->index();
-        return true;
+        $this->view->render('pocetna');
         //$this->view->render('privatno' . DIRECTORY_SEPARATOR . 'nadzornaPloca');
     }
 
@@ -68,7 +82,7 @@ class IndexController extends Controller
     {
         unset($_SESSION['operater']);
         session_destroy();
-        $this->index();
+        header('location: ' . APP::config('url'));
     }
 
     public function index()

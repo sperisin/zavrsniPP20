@@ -8,45 +8,19 @@
       <li class="nav-item">
         <a class="nav-link" href="/index">Početna</a>
       </li>
+      <?php if (isset($_SESSION['operater'])) :?>
       <li class="nav-item">
-        <a class="nav-link" href="/index/onama">O nama</a>
+        <a class="nav-link" href="/index/profil">Profil</a>
       </li>
-      <?php if(isset($_SESSION['operater'])): ?>
-        <?php if ($_SESSION['operater']->uloga == 'oper') : ?>
-          <li class="nav-item">
-          <a class="nav-link" href="/index">Kontakti</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/index">Početna</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/index">Početna</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/index">Početna</a>
-        </li>
-        <?php endif; ?>
-        <?php if ($_SESSION['operater']->uloga == 'admin') : ?>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Upravljačka ploča
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/operater/index">Operateri</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-        <?php endif; ?>
-    
-    <?php endif; ?>
+      <?php endif; ?>
+
     </ul>
-    <?php if (!isset($_SESSION['operater'])) :?>
+
       <ul class="navbar-nav ml-auto">
       <li>
-    <form class="form-inline my-2 my-lg-0" method="POST" action="/index/autorizacija">
-  <label class="sr-only" for="email">Korisničko ime</label>
+      <?php if (!isset($_SESSION['operater'])) :?>
+    <form class="form-inline my-2 my-lg-0" method="POST" action="/index/?>">
+  <label class="sr-only" for="username">Korisničko ime</label>
   <div class="input-group mb-2 mr-sm-2">
     <input type="text" class="form-control" id="username" name="username" placeholder="Korisničko ime">
   </div>
@@ -55,16 +29,12 @@
   <div class="input-group mb-2 mr-sm-2">
     <input type="password" class="form-control" id="lozinka" name="lozinka" placeholder="Lozinka">
   </div>
-
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label style="margin-right: 10px;" class="form-check-label" for="exampleCheck1">Zapamti me</label>
-  </div>
-
-  <button type="submit" class="btn btn-primary mb-2">Prijava</button>
   
+  <button type="submit" class="btn btn-primary mb-2 mx-2" name="btnPrijava" formaction="/index/autorizacija">Prijava</button>
+  <button type="submit" class="btn btn-primary mb-2 mx-2" name="btnRegistracija" formaction="/index/zapocniregistraciju">Registracija</button>
+  <?php endif; ?>
 </form>
-<?php endif; ?>
+
 </li>
 </ul>
   <?php 
