@@ -1,0 +1,47 @@
+<form method="POST" action="/index/registracija">
+    <div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="ime">Ime</label>
+      <input type="text" class="form-control" id="ime" name="ime">
+    </div>
+</div>
+
+<div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="prezime">Prezime</label>
+      <input type="text" class="form-control" id="prezime" name="prezime">
+    </div>
+</div>
+
+<div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="oib">OIB</label>
+      <input type="text" class="form-control" id="oib" name="oib">
+    </div>
+    </div>
+
+<div class="form-row justify-content-center">
+<div class="form-group col-md-6">
+  <select class="form-control" id="tvrtka" name="tvrtka">
+  <option value="0">Odaberite tvrtku</option>
+    <?php foreach($tvrtke as $tvrtka): ?>
+      <option value="<?php echo $tvrtka->tvrtka_id ?>">
+        <?php echo $tvrtka->naziv ?>
+      </option>
+    <?php endforeach;?>
+    </select>
+  </div>
+  </div>
+
+<div class="text-center">
+      <button class="btn btn-primary">Završite registraciju</button>
+</div>
+</form>
+
+<?php if(isset($alertPoruka)): ?>
+    <script>
+        	alert("<?php echo $alertPoruka ?>");
+    </script>
+<?php endif;?>
+
+

@@ -1,0 +1,19 @@
+<tr>
+    <td style="text-align: center;" title="Operater"><?php echo $red->osoba?></td>
+    <td style="text-align: center;" title="OIB"><?php echo $red->oib?></td>
+    <td style="text-align: center;" title="Email"><?php echo $red->email?></td>
+    <td style="text-align: center;" title="Uloga"><?php echo $red->uloga?></td>
+    <?php 
+        if ($_SESSION['operater']->uloga == 'superadmin'){
+        echo '<td style="text-align: center;" title="Tvrtka">' . $red->naziv . '</td>';
+        }
+    ?>
+    <td style="text-align: center;"> 
+    <?php 
+        if ($_SESSION['operater']->uloga == 'superadmin'): ?>
+        <a href="/admini/operaterpromjena?partner_id=<?php echo $red->operater_id?>"><i title="Promijeni" class="fas fa-edit fa-2x"></i></a> 
+    <?php endif; ?>
+        <a onclick="return confirm('Sigurno obrisati <?php echo $red->ime . ' ' . $red->prezime ?>?');" href="/admini/operaterobrisi?operater_id=<?php echo $red->operater_id?>"><i title="Obriši" class="fas fa-trash fa-2x" style="color: red;"></i></a>
+    </td>
+</tr>
+

@@ -1,16 +1,55 @@
 <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
-  <a class="navbar-brand" href="/index"><?php echo APP::config('nazivAPP');?></a>
+  <a class="navbar-brand" href="/"><?php echo APP::config('nazivAPP');?></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/index">Početna</a>
+        <a class="nav-link" href="/">Početna</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/index/omeni">O meni</a>
       </li>
       <?php if (isset($_SESSION['operater'])) :?>
       <li class="nav-item">
-        <a class="nav-link" href="/index/profil">Profil</a>
+        <a class="nav-link" href="/profil/index">Profil</a>
+      </li>
+      <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Šifarnik 
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/sifarnik/mjesta">Mjesta</a>
+                <a class="dropdown-item" href="/sifarnik/drzave">Države</a>
+                </div>
+      <?php if ($_SESSION['operater']->uloga == 'Operater') :?>
+      <li class="nav-item">
+        <a class="nav-link" href="/partner/index">Partneri</a>
+      </li>
+      <?php endif; ?>
+
+      <!-- ADMIN ZONE -->
+          <?php if ($_SESSION['operater']->uloga !== 'Operater') :?>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Administriranje aplikacije 
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/admini/operateri">Operateri</a>
+                <?php if ($_SESSION['operater']->uloga == 'superadmin') :?>
+                  <a class="dropdown-item" href="/admini/tvrtke">Tvrtke</a>
+                <?php endif; ?>
+                <a class="dropdown-item" href="/admini/partneri">Partneri</a>
+              </div>
+            </li>
+          <?php endif; ?>
+      <!-- /ADMIN ZONE -->
+      <li class="nav-item">
+        <a class="nav-link" href="/napomena/index">Napomene</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/index/ERA">ERA</a>
       </li>
       <?php endif; ?>
 
@@ -20,9 +59,9 @@
       <li>
       <?php if (!isset($_SESSION['operater'])) :?>
     <form class="form-inline my-2 my-lg-0" method="POST" action="/index/?>">
-  <label class="sr-only" for="username">Korisničko ime</label>
+  <label class="sr-only" for="email">Email</label>
   <div class="input-group mb-2 mr-sm-2">
-    <input type="text" class="form-control" id="username" name="username" placeholder="Korisničko ime">
+    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
   </div>
 
   <label class="sr-only" for="lozinka">Lozinka</label>

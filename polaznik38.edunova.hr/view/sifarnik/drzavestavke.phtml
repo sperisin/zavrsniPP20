@@ -1,0 +1,8 @@
+<tr>
+    <td style="text-align: center;" title="Oznaka"><?php echo $drzava->oznaka?></td>
+    <td style="text-align: center;" title="Naziv države"><?php echo $drzava->naziv?></td>
+    <td style="text-align: center;">    <a href="/sifarnik/drzavapromjena?drzava_id=<?php echo $drzava->drzava_id?>"><i title="Promijeni" class="fas fa-edit fa-2x"></i></a> 
+            <a onclick="return confirm('Sigurno obrisati <?php echo $drzava->naziv?>?');" href="/sifarnik/drzavaobrisi?drzava_id=<?php echo $drzava->drzava_id?>"><i title="Obriši" class="fas fa-trash fa-2x" style="color: red;"></i></a>
+    </td>
+</tr>
+

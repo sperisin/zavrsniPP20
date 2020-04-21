@@ -1,0 +1,36 @@
+<form method="POST" action="/admini/operateredit">
+    <div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="operater">Operater</label>
+      <input type="text" class="form-control" id="operater" name="operater" value="<?php echo $operater->ime . ' ' . $operater->prezime?>" readonly>
+    </div>
+</div>
+
+<div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="uloga">Uloga</label>
+      <input type="text" class="form-control" id="uloga" name="uloga" value="<?php echo $operater->uloga?>">
+    </div>
+</div>
+
+<div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" name="email" value="<?php echo $operater->email?>">
+    </div>
+</div>
+
+
+<div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="OIB">OIB</label>
+      <input type="text" class="form-control" id="OIB" name="OIB" value="<?php echo $operater->oib?>">
+    </div>
+</div>
+
+<div class="text-center">
+      <button class="btn btn-primary">Promijeni podatke</button>
+</div>
+
+<input type="hidden" name="operater_id" value="<?php echo $operater?>">
+</form>

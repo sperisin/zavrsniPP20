@@ -1,0 +1,61 @@
+<form method="POST" action="/admini/tvrtkeedit">
+    <div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="naziv">Naziv</label>
+      <input type="text" class="form-control" id="nazivtvrtke" name="nazivtvrtke">
+    </div>
+</div>
+
+<div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="oib">OIB</label>
+      <input type="text" class="form-control" id="oibtvrtke" name="oibtvrtke">
+    </div>
+</div>
+
+<div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="adresa">Adresa</label>
+      <input type="text" class="form-control" id="adresatvrtke" name="adresatvrtke">
+    </div>
+</div>
+
+<div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="telefon">Telefon</label>
+      <input type="text" class="form-control" id="telefontvrtke" name="telefontvrtke">
+    </div>
+</div>
+
+<div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="emailtvrtke" name="emailtvrtke">
+    </div>
+</div>
+
+<div class="form-row justify-content-center">
+<div class="form-group col-md-6">
+  <select class="form-control" id="mjesto" name="mjesto">
+  <option value="0">Odaberite mjesto</option>
+    <?php foreach($mjesta as $mjesto): ?>
+      <option value="<?php echo $mjesto->mjesto_id ?>">
+        <?php echo $mjesto->naziv ?>
+      </option>
+    <?php endforeach;?>
+    </select>
+  </div>
+  </div>
+
+<div class="text-center">
+      <button class="btn btn-primary">Promijeni tvrtku</button>
+</div>
+
+<input type="hidden" name="tvrtka_id" value="<?php echo $tvrtka->tvrtka_id?>">
+</form>
+
+<?php if(isset($alertPoruka)): ?>
+    <script>
+        	alert("<?php echo $alertPoruka ?>");
+    </script>
+<?php endif;?>

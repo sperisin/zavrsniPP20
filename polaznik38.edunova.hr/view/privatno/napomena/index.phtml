@@ -1,0 +1,40 @@
+<div class="container">
+<div class="col-sm-12 text-center">
+    <a class="btn btn-primary" href="/napomena/novi" role="button">Dodaj novu napomenu</a>
+</div>
+    <div class="table-responsive-sm" style="width: 100%; overflow: auto; max-height: 600px;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="text-align: center;">Vrijeme kreiranja</th>
+                <th style="text-align: center;">Naziv partnera</th>
+                <th style="text-align: center;">Poruka</th>
+                <th style="text-align: center;">Kada kontaktirati</th>
+                <th style="text-align: center;">Operater</th>
+                <th style="text-align: center;">Akcija</th>
+                <?php if ($_SESSION['operater']->uloga == 'superadmin')
+                    echo '<th style="text-align: center;">Tvrtka</th>';
+                ?>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+            foreach($napomene as $red){
+                include 'napomenastavke.phtml';
+            }
+            ?>
+        </tbody>
+    </table>
+    </div>
+
+<div id="poruka" class="form-group" style="display: none">
+  <label for="cijelaporuka">Cijela poruka:</label>
+  <textarea id="cijelaporuka" class="form-control rounded-0" rows="15"></textarea>
+</div>
+
+
+<?php if(isset($alertPoruka)): ?>
+    <script>
+        	alert("<?php echo $alertPoruka ?>");
+    </script>
+<?php endif;?>

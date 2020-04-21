@@ -7,7 +7,7 @@ class AutorizacijaController extends Controller
     {
         parent::__construct();
         if(!isset($_SESSION['operater'])){
-            $this->view->render('prijava');
+            $this->view->render('zapocniregistraciju');
             exit;
         }
     }

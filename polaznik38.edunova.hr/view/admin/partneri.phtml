@@ -1,0 +1,44 @@
+<div class="container">
+<div class="col-sm-12 text-center">
+    <a class="btn btn-primary" href="/admini/partnerinovi" role="button">Dodaj novog partnera</a>
+</div>
+    <div class="table-responsive-sm" style="width: 100%; overflow: auto; max-height: 800px;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="text-align: center;">Naziv partnera</th>
+                <th style="text-align: center;">OIB</th>
+                <th style="text-align: center;">Adresa</th>
+                <th style="text-align: center;">Telefon</th>
+                <th style="text-align: center;">Email</th>
+                <th style="text-align: center;">Mjesto</th>
+                <th style="text-align: center;">Poštanski broj</th>
+                <th style="text-align: center;">Država</th>
+                <?php if ($_SESSION['operater']->uloga == 'Admin' || $_SESSION['operater']->uloga == 'superadmin')
+                    echo '<th style="text-align: center;">Akcija</th>';
+                ?>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+            if ($_SESSION['operater']->uloga == 'Admin'){
+                foreach($partneri as $red){
+                    include 'partneristavke.phtml';
+                }
+            }
+            else if ($_SESSION['operater']->uloga == 'superadmin'){
+                foreach($partnerizasa as $red){
+                    include 'partneristavke.phtml';
+                }
+            }
+            ?>
+        </tbody>
+    </table>
+    </div>
+</div>
+
+<?php if(isset($alertPoruka)): ?>
+    <script>
+        	alert("<?php echo $alertPoruka ?>");
+    </script>
+<?php endif;?>

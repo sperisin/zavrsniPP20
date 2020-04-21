@@ -1,0 +1,12 @@
+<tr>
+    <td style="text-align: center;" title="Vrijeme kreiranja"><?php echo DateTime::createFromFormat('Y-m-d H:i:s', $red->sysdatum)->format('j.n.Y H:i:s');?></td>
+    <td style="text-align: center;" title="Naziv partnera"><?php echo $red->nazivpartnera?></td>
+    <td style="text-align: center;"> <a class="prikaziporuku" id="prikaziporuku_<?php echo $red->napomena_id?>" href="#"><?php echo $red->porukaskraceno?></a></td> <!-- Button za otvaranje proširenja poruke -->
+    <td style="text-align: center;" title="Kada kontaktirati"><?php echo DateTime::createFromFormat('Y-m-d H:i:s', $red->kontaktdatum)->format('j.n.Y');?></td>
+    <td style="text-align: center;" title="Operater"><?php echo $red->operater?></td>
+    <td style="text-align: center;">    <a href="/napomena/promjena?napomena_id=<?php echo $red->napomena_id?>"><i title="Promijeni" class="fas fa-edit fa-2x"></i></a> 
+            <a onclick="return confirm('Sigurno obrisati?');" href="/napomena/obrisi?napomena_id=<?php echo $red->napomena_id?>"><i title="Obriši" class="fas fa-trash fa-2x" style="color: red;"></i></a>
+    </td>
+    <?php if ($_SESSION['operater']->uloga == 'superadmin') echo ' <td style="text-align: center;" title="Tvrtka">' . $red->naziv . '</td>';?> 
+</tr>
+

@@ -1,0 +1,41 @@
+<form method="POST" action="/sifarnik/mjestoedit">
+    <div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="postanskibroj">Poštanski broj</label>
+      <input type="text" class="form-control" id="postanskibroj" name="postanskibroj" value="<?php echo $mjesto->postanskibroj?>">
+    </div>
+</div>
+
+<div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="naziv">Naziv</label>
+      <input type="text" class="form-control" id="nazivmjesta" name="nazivmjesta" value="<?php echo $mjesto->naziv?>">
+    </div>
+</div>
+
+<div class="form-row justify-content-center">
+<div class="form-group col-md-6">
+  <select class="form-control" id="drzava" name="drzava">
+  <option value="0">Odaberite državu</option>
+    <?php foreach($drzave as $drzava): ?>
+      <option value="<?php echo $drzava->drzava_id ?>">
+        <?php echo $drzava->naziv ?>
+      </option>
+    <?php endforeach;?>
+    </select>
+  </div>
+  </div>
+
+
+<div class="text-center">
+      <button class="btn btn-primary">Promijeni mjesto</button>
+</div>
+<input type="hidden" name="mjesto_id" 
+  value="<?php echo $mjesto->mjesto_id?>">
+</form>
+
+<?php if(isset($alertPoruka)): ?>
+    <script>
+        	alert("<?php echo $alertPoruka ?>");
+    </script>
+<?php endif;?>

@@ -1,0 +1,24 @@
+<div class="container">
+    <div style="text-align: center;" class="col-md-12">
+    <h3><?php echo $_SESSION['operater']->ime . ' ' . $_SESSION['operater']->prezime; ?></h3>
+    <hr>
+    </div>
+    <h4>
+    <div class="justify-content-center">
+        EMAIL: <input id="email" name="email" type="email" style="border:none" autocorrect="off" autocapitalize="off" value="<?php echo $_SESSION['operater']->email?>" readonly>
+    </div>
+    <div class="justify-content-center">
+        IME: <input id="ime" name="ime" type="text" style="border:none" autocorrect="off" autocapitalize="off" value="<?php echo $_SESSION['operater']->ime?>" readonly>
+    </div>
+    <div class="justify-content-center">
+        PREZIME: <input id="prezime" name="prezime" type="text" style="border:none" autocorrect="off" autocapitalize="off" value="<?php echo $_SESSION['operater']->prezime?>" readonly>
+    </div>
+    <div class="justify-content-center">
+        OIB: <input id="oib" name="oib" type="text" style="border:none" autocorrect="off" autocapitalize="off" value="<?php echo $_SESSION['operater']->oib?>" readonly>
+    </div>
+    <div class="justify-content-center">
+        TVRTKA: <input id="tvrtka" name="tvrtka" type="text" style="border:none" autocorrect="off" autocapitalize="off" value="<?php echo $tvrtka?>" readonly>
+    </div>
+    </h4>
+</div>
+

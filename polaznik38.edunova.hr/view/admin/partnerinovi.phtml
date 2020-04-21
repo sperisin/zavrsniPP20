@@ -1,0 +1,59 @@
+<form method="POST" action="/admini/partnerispremi">
+    <div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="naziv">Naziv</label>
+      <input type="text" class="form-control" id="nazivpartnera" name="nazivpartnera">
+    </div>
+</div>
+
+<div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="oib">OIB</label>
+      <input type="text" class="form-control" id="oibpartnera" name="oibpartnera">
+    </div>
+</div>
+
+<div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="adresa">Adresa</label>
+      <input type="text" class="form-control" id="adresapartnera" name="adresapartnera">
+    </div>
+</div>
+
+<div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="telefon">Telefon</label>
+      <input type="text" class="form-control" id="telefonpartnera" name="telefonpartnera">
+    </div>
+</div>
+
+<div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="emailpartnera" name="emailpartnera">
+    </div>
+</div>
+
+<div class="form-row justify-content-center">
+<div class="form-group col-md-6">
+  <select class="form-control" id="mjesto" name="mjesto">
+  <option value="0">Odaberite mjesto</option>
+    <?php foreach($mjesta as $mjesto): ?>
+      <option value="<?php echo $mjesto->mjesto_id ?>">
+        <?php echo $mjesto->naziv ?>
+      </option>
+    <?php endforeach;?>
+    </select>
+  </div>
+  </div>
+
+<div class="text-center">
+      <button class="btn btn-primary">Dodaj partnera</button>
+</div>
+</form>
+
+<?php if(isset($alertPoruka)): ?>
+    <script>
+        	alert("<?php echo $alertPoruka ?>");
+    </script>
+<?php endif;?>

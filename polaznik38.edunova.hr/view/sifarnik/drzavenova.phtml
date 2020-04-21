@@ -1,0 +1,25 @@
+<form method="POST" action="/sifarnik/drzavaspremi">
+    <div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="naziv">Naziv</label>
+      <input type="text" class="form-control" id="nazivdrzave" name="nazivdrzave">
+    </div>
+</div>
+
+<div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="oznaka">Oznaka</label>
+      <input type="text" class="form-control" id="oznakadrzave" name="oznakadrzave">
+    </div>
+</div>
+
+<div class="text-center">
+      <button class="btn btn-primary">Dodaj državu</button>
+</div>
+</form>
+
+<?php if(isset($alertPoruka)): ?>
+    <script>
+        	alert("<?php echo $alertPoruka ?>");
+    </script>
+<?php endif;?>

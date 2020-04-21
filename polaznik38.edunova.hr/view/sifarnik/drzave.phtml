@@ -1,0 +1,29 @@
+<div class="container">
+<div class="col-sm-12 text-center">
+    <a class="btn btn-primary" href="/sifarnik/drzavanova" role="button">Dodaj novu državu</a>
+</div>
+    <div class="table-responsive-sm" style="width: 100%; overflow: auto; max-height: 400px;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="text-align: center;">Oznaka</th>
+                <th style="text-align: center;">Naziv</th>
+                <th style="text-align: center;">Akcija</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php 
+            foreach($drzave as $drzava){
+                include 'drzavestavke.phtml';
+                }
+            ?>
+        </tbody>
+    </table>
+    </div>
+</div>
+
+<?php if(isset($alertPoruka)): ?>
+    <script>
+        	alert("<?php echo $alertPoruka ?>");
+    </script>
+<?php endif;?>

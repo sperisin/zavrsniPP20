@@ -1,0 +1,21 @@
+<form method="POST" action="/sifarnik/drzavaedit">
+    <div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="naziv">Naziv</label>
+      <input type="text" class="form-control" id="nazivdrzave" name="nazivdrzave" value="<?php echo $drzava->naziv?>">
+    </div>
+</div>
+
+<div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="oznaka">Oznaka</label>
+      <input type="text" class="form-control" id="oznakadrzave" name="oznakadrzave" value="<?php echo $drzava->oznaka?>">
+    </div>
+</div>
+
+<div class="text-center">
+      <button class="btn btn-primary">Spremite promjene</button>
+</div>
+<input type="hidden" name="drzava_id" 
+  value="<?php echo $drzava->drzava_id?>">
+</form>

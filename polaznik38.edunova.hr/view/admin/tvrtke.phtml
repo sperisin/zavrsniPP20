@@ -1,0 +1,33 @@
+<div class="container">
+<div class="col-sm-12 text-center">
+    <a class="btn btn-primary" href="/admini/novatvrtka" role="button">Dodaj novu tvrtku</a>
+</div>
+    <div class="table-responsive-sm" style="width: 100%; overflow: auto; max-height: 800px;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="text-align: center;">Naziv tvrtke</th>
+                <th style="text-align: center;">OIB</th>
+                <th style="text-align: center;">Adresa</th>
+                <th style="text-align: center;">Telefon</th>
+                <th style="text-align: center;">Email</th>
+                <th style="text-align: center;">Mjesto</th>
+                <th style="text-align: center;">Poštanski broj</th>
+                <th style="text-align: center;">Država</th>
+                <?php if ($_SESSION['operater']->uloga == 'admin' || $_SESSION['operater']->uloga == 'superadmin')
+                    echo '<th style="text-align: center;">Akcija</th>';
+                ?>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+            if ($_SESSION['operater']->uloga == 'superadmin'){
+                foreach($tvrtke as $red){
+                    include 'tvrtkestavke.phtml';
+                }
+            }
+            ?>
+        </tbody>
+    </table>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<form method="POST" action="/pristuppromjena">
+<div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" name="email" value="<?php echo $_SESSION['operater']->email?>">
+    </div>
+</div>
+
+<div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="lozinka">Lozinka</label>
+      <input type="password" class="form-control" id="lozinka" name="lozinka" value="">
+    </div>
+</div>
+
+<div class="form-row justify-content-center">
+    <div class="form-group col-md-6">
+      <label for="lozinkaponovo">Lozinka ponovo</label>
+      <input type="password" class="form-control" id="lozinkaponovo" name="lozinkaponovo" value="">
+    </div>
+</div>
+
+<div class="text-center">
+      <button class="btn btn-primary">Spremite promjene</button>
+</div>
+
+</form>
+
+<?php if(isset($alertPoruka)): ?>
+    <script>
+        	alert("<?php echo $alertPoruka ?>");
+    </script>
+<?php endif;?>
