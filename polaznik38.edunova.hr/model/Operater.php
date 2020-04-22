@@ -66,12 +66,12 @@ class Operater
                 */
     }
 
-    public static function delete()
+    public static function delete($id)
     {
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('delete from operater where operater_id = :operater_id');
         try{
-            $izraz->execute($_GET);
+            $izraz->execute($id);
         }catch(PDOException $e){
             echo $e->getMessage();
             return false;
