@@ -50,9 +50,10 @@ class ProfilController extends AutorizacijaController
             ]);
             return;
         }
-
+        $_SESSION['operater']->prezime = $_POST['prezime'];
+        $_SESSION['operater']->ime = $_POST['ime'];
         Operater::updateOsnovno();
-        $this->view->render($this->viewDir . 'index');
+        $this->index();
     }
 
     public function pristuppromjena()
@@ -78,11 +79,11 @@ class ProfilController extends AutorizacijaController
             ]);
             return;
         }
-
+        $_SESSION['operater']->email = $_POST['email'];
         unset($_POST['lozinkaponovo']);
         $_POST['lozinka'] = password_hash($_POST['lozinka'], PASSWORD_BCRYPT);
         Operater::updatePristupni();
-        $this->view->render($this->viewDir . 'index');
+        $this->index();
     }
 
 }
