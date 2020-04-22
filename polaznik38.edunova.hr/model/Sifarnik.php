@@ -39,7 +39,8 @@ class Sifarnik
     public static function mjestoDelete()
     {
         $veza = DB::getInstanca();
-        $izraz = $veza->prepare('delete from mjesto where mjesto_id = :mjesto_id');
+        $izraz = $veza->prepare('delete from mjesto where mjesto_id = :mjesto_id and mjesto_id not in (select mjesto_id from partner where mjesto_id = :mjesto_id) and 
+                                mjesto_id not in (select mjesto_id from tvrtka where mjesto_id = :mjesto_id)');
         try{
             $izraz->execute($_GET);
         }
@@ -79,21 +80,7 @@ class Sifarnik
         $izraz = $veza->prepare('update drzava set naziv = :naziv, oznaka = :oznaka where drzava_id = :drzava_id');
         $izraz->execute(['naziv'=>$_POST['nazivdrzave'], 'oznaka'=>$_POST['oznakadrzave'], 'drzava_id'=>$id]);
     }
-/*
-    public static function drzavaMjesto()
-    {
-        $veza = DB::getInstanca();
-        $izraz = $veza->prepare('select * from mjesto where drzava_id = :drzava_id');
-        $izraz->execute($_GET);
-        $izraz->fetchAll();
-        if ($izraz->rowCount() == '0'){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-*/
+
     public static function drzavaDelete()
     {
         $veza = DB::getInstanca();

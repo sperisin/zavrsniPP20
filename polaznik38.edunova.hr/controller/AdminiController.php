@@ -103,7 +103,9 @@ class AdminiController extends AdminController
 
     public function partnerinovi()
     {
-        $this->view->render($this->viewDir . 'partnerinovi');
+        $this->view->render($this->viewDir . 'partnerinovi', [
+            'mjesta'=>Sifarnik::mjestoReadall()
+        ]);
     }
 
     public function partneripromjena()

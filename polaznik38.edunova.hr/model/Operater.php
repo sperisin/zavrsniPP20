@@ -2,12 +2,12 @@
 
 class Operater
 {
-    public static function read()
+    public static function read($id)
     {
         $veza = DB::getInstanca();
-        $izraz = $veza->prepare('select * from operater');
-        $izraz->execute();
-        return $izraz->fetchAll();
+        $izraz = $veza->prepare('select * from operater where operater_id = :id');
+        $izraz->execute(['id'=>$id]);
+        return $izraz->fetch();
     }
 
     public static function readAll()
@@ -68,13 +68,15 @@ class Operater
 
     public static function delete()
     {
+        $veza = DB::getInstanca();
+        $izraz = $veza->prepare('delete from operater where operater_id = :operater_id');
         try{
-            $veza = DB::getInstanca();
-            $izraz=$veza->prepare('delete from operater where operater_id = :operater_id');
             $izraz->execute($_GET);
         }catch(PDOException $e){
             echo $e->getMessage();
+            return false;
         }
+        return true;
     }
 
     public static function registrirajnovi()
@@ -95,5 +97,17 @@ class Operater
         $izraz->execute(['uloga'=>$_POST['uloga'], 'id'=>$_POST['operater_id'], 'email'=>$_POST['email'], 'oib'=>$_POST['OIB']]);
     }
 
+    public static function updateOsnovno()
+    {
+        $veza = DB::getInstanca();
+        $izraz = $veza->prepare('update operater set prezime = :prezime, ime = :ime where operater_id = :id');
+        $izraz->execute(['ime'=>$_POST['ime'], 'prezime'=>$_POST['prezime'], 'id'=>$_SESSION['operater']->operater_id]);
+    }
 
+    public static function updatePristupni()
+    {
+        $veza = DB::getInstanca();
+        $izraz = $veza->prepare('update operater set email = :email, lozinka = :lozinka where operater_id = :id');
+        $izraz->execute(['email'=>$_POST['email'], 'lozinka'=>$_POST['lozinka'], 'id'=>$_SESSION['operater']->operater_id]);
+    }
 }

@@ -21,13 +21,17 @@ class ProfilController extends AutorizacijaController
     public function edit()
     {
         // render edit podataka 
-        $this->view->render($this->viewDir . 'edit');
+        $this->view->render($this->viewDir . 'edit', [
+            'operater'=>Operater::read($_SESSION['operater']->operater_id)
+        ]);
     }
 
     public function pristupedit()
     {
         // render edit pristupnih podataka 
-        $this->view->render($this->viewDir . 'pristupedit');
+        $this->view->render($this->viewDir . 'pristupedit', [
+            'operater'=>Operater::read($_SESSION['operater']->operater_id)
+        ]);
     }
 
     public function promjena()

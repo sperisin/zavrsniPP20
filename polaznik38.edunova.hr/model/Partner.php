@@ -37,7 +37,7 @@ class Partner
                                 where a.tvrtka_id = :id
                                 order by a.naziv');
         $izraz->execute(['id'=>$id]);
-        return $izraz->fetch();
+        return $izraz->fetchAll();
     }
 
     public static function update($id)
@@ -52,7 +52,7 @@ class Partner
     public static function delete()
     {
         $veza = DB::getInstanca();
-        $izraz = $veza->prepare('delete from partner where partner_id = :partner_id');
+        $izraz = $veza->prepare('delete from partner where partner_id = :partner_id and partner_id not in (select partner_id from napomena where partner_id = :partner_id)');
         try{
             $izraz->execute($_GET);
         }
@@ -63,7 +63,7 @@ class Partner
         return true;
     }
 
-    public function create()
+    public static function create()
     {
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('insert into partner (naziv, oib, adresa, telefon, email, mjesto_id, tvrtka_id) values

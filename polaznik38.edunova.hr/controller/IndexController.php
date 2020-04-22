@@ -110,18 +110,7 @@ class IndexController extends Controller
 
     public function test()
     {
-        echo password_hash('to1', PASSWORD_BCRYPT);
-        echo '<hr>';
-        echo password_hash('to2', PASSWORD_BCRYPT);
-        echo '<hr>';
-        echo password_hash('to3', PASSWORD_BCRYPT);
-        echo '<hr>';
-        echo password_hash('to4', PASSWORD_BCRYPT);
-        echo '<hr>';
-        // echo md5('mojaMala'); NE KORISTITI
-        echo '<pre>';
-        print_r(Operater::readForAdmin());
-        echo '</pre>';
+        echo '<script> alert("' . '<link href="' . APP::config('url') . 'datepicker.css" rel="stylesheet">' . '"); </script>';
     } 
 
     public function zapocniregistraciju()
